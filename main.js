@@ -1,7 +1,9 @@
 const gridContainer = document.querySelector('.grid-container');
 const inputButton = document.querySelector('#input-button');
+const resetButton = document.querySelector('#reset-button');
 
 function createGrid(size) {
+    currentGridSize = size;
     gridContainer.style.width = `${size * 45}px`;
     gridContainer.innerHTML = '';
 
@@ -44,3 +46,8 @@ inputButton.addEventListener('click', () => {
 
     createGrid(userInput);
 });
+
+resetButton.addEventListener('click', () => {
+    createGrid(currentGridSize);
+});
+
