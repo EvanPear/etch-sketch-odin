@@ -26,7 +26,7 @@ rainbowButton.addEventListener('click', () => {
 
 function createGrid(size) {
     currentGridSize = size;
-    gridContainer.style.width = `${size * 45}px`;
+    gridContainer.style.width = `${size * 25}px`;
     gridContainer.innerHTML = '';
 
     let totalCells = size * size;
