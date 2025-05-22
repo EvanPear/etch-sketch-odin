@@ -4,6 +4,7 @@
     justify-content: center;
     max-width: 750px;
     margin: 0 auto;
+    border: pink solid 1px;
 }
 
 .cell {
@@ -11,5 +12,4 @@
     display: flex;
     width: 45px;
     height: 45px;
-    border:  pink dotted 1px;
 }
