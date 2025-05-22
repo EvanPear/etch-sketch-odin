@@ -1,0 +1,15 @@
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.cell {
+    box-sizing: border-box;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    border:  pink dotted 1px;
+}
