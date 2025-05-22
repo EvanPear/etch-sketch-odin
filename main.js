@@ -31,3 +31,16 @@ document.body.addEventListener('mousedown', () => {
 document.body.addEventListener('mouseup', () => {
     mouseDown = false;
 });
+
+inputButton.addEventListener('click', () => {
+
+    let userInput;
+
+    do{
+        userInput = 
+        parseInt(prompt('How many squares per side? (Max: 100)'));
+    }while(isNaN(userInput) || userInput < 1 || userInput > 100);
+
+
+    createGrid(userInput);
+});
