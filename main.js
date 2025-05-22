@@ -1,6 +1,28 @@
 const gridContainer = document.querySelector('.grid-container');
 const inputButton = document.querySelector('#input-button');
 const resetButton = document.querySelector('#reset-button');
+const rainbowButton = document.querySelector('#rgb-button');
+
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+rainbowButton.addEventListener('click', () => {
+    if(rainbowEffect === false) {
+        rainbowEffect = true;
+        rainbowButton.style.backgroundColor = 'pink';
+        rainbowButton.style.color = 'white';
+        rainbowButton.textContent = 'Rainbow: On'
+    } else if (rainbowEffect === true) {
+        rainbowEffect = false;
+        rainbowButton.style.backgroundColor = 'white';
+        rainbowButton.style.color = 'pink';
+        rainbowButton.textContent = 'Rainbow: Off';
+    }
+});
 
 function createGrid(size) {
     currentGridSize = size;
@@ -14,8 +36,10 @@ function createGrid(size) {
         newCell.classList.add('cell');
 
         newCell.addEventListener('mouseover',() => {
-            if(mouseDown) {
+            if(mouseDown && rainbowEffect === false) {
                 newCell.style.backgroundColor = 'pink';
+            } else if (mouseDown && rainbowEffect === true) {
+                newCell.style.backgroundColor = getRandomColor()
             }
         });
         gridContainer.appendChild(newCell);
@@ -25,6 +49,7 @@ function createGrid(size) {
 createGrid(16);
 
 let mouseDown = false;
+let rainbowEffect = false;
 
 document.body.addEventListener('mousedown', () => {
     mouseDown = true;
@@ -49,5 +74,8 @@ inputButton.addEventListener('click', () => {
 
 resetButton.addEventListener('click', () => {
     createGrid(currentGridSize);
+    rainbowEffect = false;
+    rainbowButton.textContent = 'Rainbow'
+    rainbowButton.style.backgroundColor = 'white';
+    rainbowButton.style.color = 'pink';
 });
-

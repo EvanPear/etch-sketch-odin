@@ -14,7 +14,7 @@
     height: 45px;
 }
 
-#input-button, #reset-button {
+#input-button, #reset-button, #rgb-button {
     border-radius: 5px;
     padding-inline: 9px;
     padding-block: 4px;
@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-#input-button:hover, #reset-button:hover {
+#input-button:hover, #reset-button:hover, #rgb-button:hover {
     transform: scale(1.1);
     background-color: pink;
     color: white;
