@@ -2,6 +2,8 @@ const gridContainer = document.querySelector('.grid-container');
 const inputButton = document.querySelector('#input-button');
 const resetButton = document.querySelector('#reset-button');
 const rainbowButton = document.querySelector('#rgb-button');
+const opacityButton = document.querySelector('#opacity-button');
+
 
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
@@ -40,6 +42,11 @@ function createGrid(size) {
                 newCell.style.backgroundColor = 'pink';
             } else if (mouseDown && rainbowEffect === true) {
                 newCell.style.backgroundColor = getRandomColor()
+            }
+            if(opacityActive) {
+                opacityChanger(newCell);
+            } else {
+                newCell.style.opacity = 1;
             }
         });
         gridContainer.appendChild(newCell);
@@ -87,4 +94,21 @@ resetButton.addEventListener('click', () => {
     rainbowButton.textContent = 'Rainbow'
     rainbowButton.style.backgroundColor = 'white';
     rainbowButton.style.color = 'pink';
+    opacityButton.style.backgroundColor = 'white';
+    opacityButton.style.color = 'pink';
+    opacityButton.textContent = 'Toggle opacity';
+});
+
+opacityButton.addEventListener('click', () => {
+    if(opacityActive) {
+        opacityActive = false;
+        opacityButton.style.backgroundColor = 'white';
+        opacityButton.style.color = 'pink';
+        opacityButton.textContent = 'Opacity: Off';
+    } else {
+        opacityActive = true;
+        opacityButton.style.backgroundColor = 'pink';
+        opacityButton.style.color = 'white';
+        opacityButton.textContent = 'Opacity: On'; 
+    }
 });
