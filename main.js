@@ -26,6 +26,8 @@ rainbowButton.addEventListener('click', () => {
     }
 });
 
+let currentGridSize = 16;
+
 function createGrid(size) {
     currentGridSize = size;
     gridContainer.style.width = `${size * 25}px`;
@@ -81,7 +83,11 @@ inputButton.addEventListener('click', () => {
 
     do{
         userInput = 
-        parseInt(prompt('How many squares per side? (Max: 100)'));
+        prompt('How many squares per side? (Max: 100)');
+        if(userInput === null) return;
+
+        userInput = parseInt(userInput);
+
     }while(isNaN(userInput) || userInput < 1 || userInput > 100);
 
 
@@ -97,6 +103,7 @@ resetButton.addEventListener('click', () => {
     opacityButton.style.backgroundColor = 'white';
     opacityButton.style.color = 'pink';
     opacityButton.textContent = 'Toggle opacity';
+    opacityActive = false;
 });
 
 opacityButton.addEventListener('click', () => {
