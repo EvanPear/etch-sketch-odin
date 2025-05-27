@@ -23,7 +23,7 @@
     height: 25px;
 }
 
-#input-button, #reset-button, #rgb-button {
+#input-button, #reset-button, #rgb-button, #opacity-button {
     border-radius: 5px;
     padding-inline: 9px;
     padding-block: 4px;
@@ -34,7 +34,7 @@
     margin-bottom: 12px;
 }
 
-#input-button:hover, #reset-button:hover, #rgb-button:hover {
+#input-button:hover, #reset-button:hover, #rgb-button:hover, #opacity-button:hover {
     transform: scale(1.1);
     background-color: pink;
     color: white;

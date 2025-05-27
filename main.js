@@ -48,8 +48,17 @@ function createGrid(size) {
 
 createGrid(16);
 
+function opacityChanger(ele) {
+    let currentOpacity = parseFloat(ele.style.opacity) || 0.1;
+    let newOpacity = currentOpacity + 0.1;
+
+    if(newOpacity > 1) newOpacity = 1;
+    ele.style.opacity = newOpacity;
+}
+
 let mouseDown = false;
 let rainbowEffect = false;
+let opacityActive = false;
 
 document.body.addEventListener('mousedown', () => {
     mouseDown = true;
