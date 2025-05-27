@@ -26,7 +26,7 @@ rainbowButton.addEventListener('click', () => {
     }
 });
 
-let currentGridSize = 16;
+let currentGridSize = 32;
 
 function createGrid(size) {
     currentGridSize = size;
@@ -55,7 +55,7 @@ function createGrid(size) {
     }
 }
 
-createGrid(16);
+createGrid(32);
 
 function opacityChanger(ele) {
     let currentOpacity = parseFloat(ele.style.opacity) || 0.1;
