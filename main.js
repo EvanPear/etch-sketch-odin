@@ -47,9 +47,13 @@ function createGrid(size) {
         newCell.classList.add('cell');
 
         newCell.addEventListener('mouseover',() => {
-            if(mouseDown && rainbowEffect === false) {
+            const bgColor = getComputedStyle(newCell).backgroundColor;
+
+            if(mouseDown &&
+                !rainbowEffect && 
+                (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent')) {
                 newCell.style.backgroundColor = 'pink';
-            } else if (mouseDown && rainbowEffect === true) {
+            } else if (mouseDown && rainbowEffect) {
                 newCell.style.backgroundColor = getRandomColor(newCell)
             }
             if(opacityActive) {
@@ -102,6 +106,7 @@ inputButton.addEventListener('click', () => {
     createGrid(userInput);
 });
 
+// Resets the grid to the grid to the current size and restores default button states and settings
 resetButton.addEventListener('click', () => {
     createGrid(currentGridSize);
     rainbowEffect = false;
