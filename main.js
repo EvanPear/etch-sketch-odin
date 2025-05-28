@@ -4,7 +4,7 @@ const resetButton = document.querySelector('#reset-button');
 const rainbowButton = document.querySelector('#rgb-button');
 const opacityButton = document.querySelector('#opacity-button');
 
-
+// Returns a random color if cell background is transparent, otherwise returns current color
 function getRandomColor(ele) {
     let currentColor = getComputedStyle(ele).backgroundColor;
 
@@ -34,6 +34,7 @@ rainbowButton.addEventListener('click', () => {
 
 let currentGridSize = 32;
 
+// Creates a square grid of cells with size * size dimensions and sets grid width accordingly
 function createGrid(size) {
     currentGridSize = size;
     gridContainer.style.width = `${size * 25}px`;
@@ -64,21 +65,22 @@ function createGrid(size) {
 createGrid(32);
 
 function opacityChanger(ele) {
-    let currentOpacity = parseFloat(ele.style.opacity) || 0.1;
+    // Uses the cells current opacity or sets it to 0.1 if none is set
+    let currentOpacity = parseFloat(ele.style.opacity) || 0.1; 
     let newOpacity = currentOpacity + 0.1;
 
     if(newOpacity > 1) newOpacity = 1;
     ele.style.opacity = newOpacity;
 }
 
-let mouseDown = false;
-let rainbowEffect = false;
-let opacityActive = false;
+let mouseDown = false; // Tracks if mouse button is currently pressed
+let rainbowEffect = false; // When true, hovering colors cells with random colors instead of pink
+let opacityActive = false; // When true, cells opacity slowly increase with each mouseover
 
+// Tracks mouse button state for drawing while, mouse is held down
 document.body.addEventListener('mousedown', () => {
     mouseDown = true;
 });
-
 document.body.addEventListener('mouseup', () => {
     mouseDown = false;
 });
