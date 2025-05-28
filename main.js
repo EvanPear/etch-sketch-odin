@@ -5,11 +5,17 @@ const rainbowButton = document.querySelector('#rgb-button');
 const opacityButton = document.querySelector('#opacity-button');
 
 
-function getRandomColor() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+function getRandomColor(ele) {
+    let currentColor = ele.style.backgroundColor;
+
+    if(currentColor === '') {      
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    } else {
+      return currentColor;
+    } 
 }
 
 rainbowButton.addEventListener('click', () => {
@@ -43,7 +49,7 @@ function createGrid(size) {
             if(mouseDown && rainbowEffect === false) {
                 newCell.style.backgroundColor = 'pink';
             } else if (mouseDown && rainbowEffect === true) {
-                newCell.style.backgroundColor = getRandomColor()
+                newCell.style.backgroundColor = getRandomColor(newCell)
             }
             if(opacityActive) {
                 opacityChanger(newCell);
