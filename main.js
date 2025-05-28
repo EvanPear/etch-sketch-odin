@@ -6,9 +6,9 @@ const opacityButton = document.querySelector('#opacity-button');
 
 
 function getRandomColor(ele) {
-    let currentColor = ele.style.backgroundColor;
+    let currentColor = getComputedStyle(ele).backgroundColor;
 
-    if(currentColor === '') {      
+    if(currentColor === 'rgba(0, 0, 0, 0)' || currentColor === 'transparent') {      
       const r = Math.floor(Math.random() * 256);
       const g = Math.floor(Math.random() * 256);
       const b = Math.floor(Math.random() * 256);
@@ -19,12 +19,12 @@ function getRandomColor(ele) {
 }
 
 rainbowButton.addEventListener('click', () => {
-    if(rainbowEffect === false) {
+    if(!rainbowEffect) {
         rainbowEffect = true;
         rainbowButton.style.backgroundColor = 'pink';
         rainbowButton.style.color = 'white';
         rainbowButton.textContent = 'Rainbow: On'
-    } else if (rainbowEffect === true) {
+    } else if(rainbowEffect) {
         rainbowEffect = false;
         rainbowButton.style.backgroundColor = 'white';
         rainbowButton.style.color = 'pink';
